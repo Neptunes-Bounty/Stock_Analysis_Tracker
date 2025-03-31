@@ -375,7 +375,7 @@ except Exception as e:
 # Add footer
 st.markdown("---")
 st.markdown("Data provided by Yahoo Finance. This app is for informational purposes only and does not constitute financial advice.")
-st.markdown("""Made By Neptunes_Bounty in his spare time. Please take the time to leave some feedback.
+st.markdown("""Made by Neptunes_Bounty in his spare time. Please take the time to leave some feedback.
 
 Connect with me on:
 [![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Neptunes-Bounty/)
