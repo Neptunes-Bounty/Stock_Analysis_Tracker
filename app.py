@@ -71,7 +71,7 @@ try:
                 st.error(f"Could not find data for symbol: {stock_symbol}. Please check the symbol and try again.")
                 st.stop()
         except Exception as e:
-            st.error(f"Error: {stock_symbol} may not be a valid stock symbol. Please check and try again.")
+            st.error(f"Error: {stock_symbol} is not a valid stock symbol. Please check and try again.")
             st.stop()
         
         # Get historical data
@@ -147,8 +147,8 @@ try:
             x = hist_data.index,
             y = hist_data['Volume'],
             name = 'Volume',
-            marker_color = 'rgba(0, 0, 255, 0.3)',
-            opacity = 0.3,
+            marker_color = 'rgba(0, 0, 255, 0.4)',
+            opacity = 0.4,
             yaxis = 'y2'
         ))
         
@@ -159,11 +159,11 @@ try:
             yaxis_title = "Price ($)",
             yaxis2 = dict(
                 title ="Volume",
-                overlaying="y",
-                side="right",
-                showgrid=False
+                overlaying = "y",
+                side = "right",
+                showgrid = False
             ),
-            xaxis_rangeslider_visible=False,
+            xaxis_rangeslider_visible = False,
             height = 600,
             legend = dict(
                 orientation = "h",
@@ -195,7 +195,7 @@ try:
             y = hist_data['Close'],
             mode = 'lines',
             name = 'Close Price',
-            line = dict(color='black', width=2)
+            line = dict(color = 'orange', width = 2.5)
         ))
         
         # Add moving averages
@@ -290,12 +290,12 @@ try:
         
         with col1:
             st.markdown("#### Valuation Metrics")
-            st.dataframe(valuation_metrics, use_container_width=True)
+            st.dataframe(valuation_metrics, use_container_width = True)
             st.markdown(get_csv_download_link(valuation_metrics, f"{stock_symbol}_valuation_metrics"), unsafe_allow_html=True)
         
         with col2:
             st.markdown("#### Financial Metrics")
-            st.dataframe(financial_metrics, use_container_width=True)
+            st.dataframe(financial_metrics, use_container_width = True)
             st.markdown(get_csv_download_link(financial_metrics, f"{stock_symbol}_financial_metrics"), unsafe_allow_html=True)
         
         # Historical data table
@@ -311,8 +311,8 @@ try:
         hist_display['Volume'] = hist_display['Volume'].apply(lambda x: f"{x:,}")
         
         # Display the table
-        st.dataframe(hist_display, use_container_width=True)
-        st.markdown(get_csv_download_link(hist_data, f"{stock_symbol}_historical_data"), unsafe_allow_html=True)
+        st.dataframe(hist_display, use_container_width = True)
+        st.markdown(get_csv_download_link(hist_data, f"{stock_symbol}_historical_data"), unsafe_allow_html = True)
     
     with tab3:
         st.subheader("Company Information")
@@ -347,7 +347,7 @@ try:
             try:
                 company_officers = ticker.get_company_officers()
                 if company_officers and len(company_officers) > 0:
-                    for officer in company_officers[:5]:  # Limit to top 5 officers
+                    for officer in company_officers[:5]:  # Limit to top 5 officers in the company
                         st.markdown(f"**{officer.get('name', 'N/A')}**")
                         st.markdown(f"Title: {officer.get('title', 'N/A')}")
                         st.markdown(f"Age: {officer.get('age', 'N/A')}")
@@ -359,7 +359,7 @@ try:
             
             st.markdown("#### Additional Information")
             additional_info = {
-                'Market': info.get('market', 'N/A'),
+                'Market': info.get('market', 'N/A').upper(),
                 'Exchange': info.get('exchange', 'N/A'),
                 'Currency': info.get('currency', 'N/A'),
                 'Quote Type': info.get('quoteType', 'N/A')
@@ -375,3 +375,11 @@ except Exception as e:
 # Add footer
 st.markdown("---")
 st.markdown("Data provided by Yahoo Finance. This app is for informational purposes only and does not constitute financial advice.")
+st.markdown("""Made by Neptunes_Bounty in his spare time. Please take the time to leave some feedback.
+
+Connect with me on:
+[![GitHub](https://img.shields.io/badge/GitHub-%2312100E.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Neptunes-Bounty/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/keerthi-raagav-76b19b359/)
+[![LeetCode](https://img.shields.io/badge/LeetCode-%23FFA116.svg?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/u/Neptunes_Bounty/)
+""", unsafe_allow_html = True)
+
