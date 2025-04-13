@@ -37,7 +37,7 @@ with st.container():
             "5 Years": "5y",
             "Max": "max"
         }
-        selected_period = st.selectbox("Select time period", list(period_options.keys()))
+        selected_period = st.selectbox("Select time period", list(period_options.keys()), index = 5)
         period = period_options[selected_period]
     
     with col3:
