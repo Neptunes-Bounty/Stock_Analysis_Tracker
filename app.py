@@ -147,7 +147,11 @@ try:
             x = hist_data.index,
             y = hist_data['Volume'],
             name = 'Volume',
+<<<<<<< HEAD
             marker_color = 'rgba(0, 0, 255, 0.4)',
+=======
+            marker_color = 'rgba(0, 0, 255, 0.3)',
+>>>>>>> f3ba3c15284677af7579c2b21b753642ee765b3c
             opacity = 0.4,
             yaxis = 'y2'
         ))
